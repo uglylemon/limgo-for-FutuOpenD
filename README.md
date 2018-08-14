@@ -1,6 +1,8 @@
 # limgo-for-FutuOpenD
 云顿（天津）安防科技有限公司
 
+LimGo 项目筹划组QQ群：72529812
+
 golang 1.10
 https://dl.google.com/go/go1.10.3.windows-amd64.msi
 https://dl.google.com/go/go1.10.3.darwin-amd64.pkg
