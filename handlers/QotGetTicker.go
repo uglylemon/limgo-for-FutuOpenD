@@ -3,7 +3,6 @@ package handlers
 import (
 	"fmt"
 	"limgo"
-	"limgo/futupb/Qot_Common"
 	"limgo/futupb/Qot_GetTicker"
 
 	"github.com/golang/protobuf/proto"
@@ -22,17 +21,11 @@ func init() {
 }
 
 // QotGetTickerSend handler
-func QotGetTickerSend(conn *limgo.Request) error {
+func QotGetTickerSend(conn *limgo.Request, stockCode string, maxRetNum int32) error {
 	ftpack := &limgo.FutuPack{}
 	ftpack.SetProtoID(uint32(3010))
 
-	market := int32(11)
-	code := "AAPL"
-	security := &Qot_Common.Security{
-		Market: &market,
-		Code:   &code,
-	}
-	maxRetNum := int32(10)
+	security := transStockCode(stockCode)
 
 	reqData := &Qot_GetTicker.Request{
 		C2S: &Qot_GetTicker.C2S{

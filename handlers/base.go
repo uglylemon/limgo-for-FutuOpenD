@@ -6,6 +6,23 @@ import (
 	"strings"
 )
 
+func transMarket(code string) int32 {
+	market := int32(0)
+
+	switch code {
+	case "HK":
+		market = int32(1)
+	case "US":
+		market = int32(11)
+	case "SH":
+		market = int32(21)
+	case "SZ":
+		market = int32(22)
+	}
+
+	return market
+}
+
 func transStockCode(code string) *Qot_Common.Security {
 	codes := strings.Split(code, ".")
 
@@ -14,17 +31,7 @@ func transStockCode(code string) *Qot_Common.Security {
 		Code:   new(string),
 	}
 
-	switch codes[0] {
-	case "HK":
-		*stock.Market = int32(1)
-	case "US":
-		*stock.Market = int32(11)
-	case "SH":
-		*stock.Market = int32(21)
-	case "SZ":
-		*stock.Market = int32(22)
-	}
-
+	*stock.Market = transMarket(codes[0])
 	*stock.Code = codes[1]
 
 	return stock
