@@ -10,7 +10,7 @@ func main() {
 
 	block := make(chan bool)
 
-	lim := limgo.New(limgo.Config{Host: "127.0.0.1", Port: "11111"})
+	lim := limgo.New(limgo.Config{Host: "safe.lim.app", Port: "11111"})
 
 	// 1002 GetGlobalState
 	limgo.Do("send.GetGlobalState", lim)
@@ -24,10 +24,13 @@ func main() {
 		lim.Recv()
 	}()
 
+	// 3003 QotGetSubInfo
+	limgo.Do("send.QotGetSubInfo", lim)
+
 	// // 3010 QotGetTicker
-	// limgo.Do("send.QotSub", lim, "US.AAPL", "Ticker", true) // 3001 QotSub
-	// limgo.Do("send.QotRegQotPush", lim, "US.AAPL", "Ticker") // 3002 QotRegQotPush
-	// limgo.Do("send.QotGetTicker", lim, "US.AAPL", int32(10)) // get
+	limgo.Do("send.QotSub", lim, "SZ.300104", "Ticker", true)  // 3001 QotSub
+	limgo.Do("send.QotRegQotPush", lim, "SZ.300104", "Ticker") // 3002 QotRegQotPush
+	limgo.Do("send.QotGetTicker", lim, "SZ.300104", int32(10)) // get
 
 	// // 3004 QotGetBasicQot
 	// limgo.Do("send.QotSub", lim, "US.AAPL", "Basic", true) // 3001 QotSub
@@ -46,9 +49,7 @@ func main() {
 
 	// 3202 QotGetStaticInfo
 	limgo.Do("send.QotGetStaticInfo", lim, "SZ", int32(3)) // get
-
-	// 3003 QotGetSubInfo
-	limgo.Do("send.QotGetSubInfo", lim)
+	limgo.Do("send.QotGetStaticInfo", lim, "SH", int32(3)) // get
 
 	<-block
 }

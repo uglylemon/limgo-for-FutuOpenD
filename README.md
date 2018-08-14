@@ -26,6 +26,9 @@ limgo\example\main.go
 
 
 接口调用如下
+	// 3202 QotGetStaticInfo 查询当前最新的市场股票代码及名称及上市日期 2018/8/14 Add
+	limgo.Do("send.QotGetStaticInfo", lim, "SZ", int32(3)) // get
+	limgo.Do("send.QotGetStaticInfo", lim, "SH", int32(3)) // get
 
 	// 3010 QotGetTicker 实时L2逐笔明细 SZ SH HK US自行区分US.AAPL SH.600123 HK.00700
 	limgo.Do("send.QotSub", lim, "SZ.300104", "Ticker", true)  // 3001 QotSub
