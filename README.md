@@ -36,19 +36,19 @@ limgo\example\main.go
 	limgo.Do("send.QotGetTicker", lim)                         // get
 
 	// 3004 QotGetBasicQot 实时L2股票基本行情
-	limgo.Do("send.QotSub", lim, "SZ.300104", "Basic", true)  // 3001 QotSub
-	limgo.Do("send.QotRegQotPush", lim, "SZ.300104", "Basic") // 3002 QotRegQotPush
+	limgo.Do("send.QotSub", lim, "HK.00700", "Basic", true)  // 3001 QotSub
+	limgo.Do("send.QotRegQotPush", lim, "HK.00700", "Basic") // 3002 QotRegQotPush
 	limgo.Do("send.QotGetBasicQot", lim)                      // get
 
 	// 3008 QotGetRT 实时L2推送分时
-	limgo.Do("send.QotSub", lim, "SZ.300104", "RT", true)  // 3001 QotSub
-	limgo.Do("send.QotRegQotPush", lim, "SZ.300104", "RT") // 3002 QotRegQotPush
+	limgo.Do("send.QotSub", lim, "US.AAPL", "RT", true)  // 3001 QotSub
+	limgo.Do("send.QotRegQotPush", lim, "US.AAPL", "RT") // 3002 QotRegQotPush
 	limgo.Do("send.QotGetRT", lim, "US.AAPL")              // get
 
 	// 3002 QotGetOrderBook 实时L2买卖十档摆盘
-	limgo.Do("send.QotSub", lim, "SZ.300104", "OrderBook", true)    // 3001 QotSub
-	limgo.Do("send.QotRegQotPush", lim, "SZ.300104", "OrderBook")   // 3002 QotRegQotPush
-	limgo.Do("send.QotGetOrderBook", lim, "SZ.300104", "OrderBook") // get
+	limgo.Do("send.QotSub", lim, "SH.600123", "OrderBook", true)    // 3001 QotSub
+	limgo.Do("send.QotRegQotPush", lim, "SH.600123", "OrderBook")   // 3002 QotRegQotPush
+	limgo.Do("send.QotGetOrderBook", lim, "SH.600123", "OrderBook") // get
 
 	// 3003 QotGetSubInfo 查询订阅信息
 	limgo.Do("send.QotGetSubInfo", lim)
